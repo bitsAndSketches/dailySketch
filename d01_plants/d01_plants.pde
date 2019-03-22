@@ -3,7 +3,7 @@ import controlP5.*;
 // constants
 int BASE_RECURSION_LVL = 3;
 int MAX_RECURSION_LVL = 10;
-int BASE_WIDTH = 250;
+float SCREEN_HEIGHT_PER = 0.45;
 
 // globals
 int nbRecursionLvl = BASE_RECURSION_LVL;
@@ -11,10 +11,12 @@ float rotation = 0;
 int strokeColor = 255;
 int baseRandomSeed = 0;
 int randomSeedValue;
+int baseWidth;
 
 void setup() {
-	size(700, 700);
+	fullScreen();
 	background(0);
+	baseWidth = int(height * SCREEN_HEIGHT_PER);
 }
 
 void drawRect(int recursion_lvl, int nbRecursionLvl, int width) {
@@ -59,6 +61,6 @@ void draw() {
 	pushMatrix();
 	translate(width / 2, height / 2);
 	rotate(rotation);
-	drawRect(1, nbRecursionLvl, BASE_WIDTH);
+	drawRect(1, nbRecursionLvl, baseWidth);
 	popMatrix();
 }
