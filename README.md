@@ -9,7 +9,7 @@ https://processing.org/download/
 ## Day 01: Plants
 ![useful image]({{ site.url }}/dailySketch/assets/d01_plants.png)
 
-Un sketch permettant de dessiner des fleurs basé sur la répétition de motifs géométrique
+Un sketch permettant de dessiner des fleurs basés sur la répétition de motifs géométriques
 
 Controls:
 - Souris (boutton gauche appuyé):
