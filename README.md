@@ -5,4 +5,6 @@ Un sketch processing par jour pendant X jours
 Processing (latest)
 https://processing.org/download/
 
-![useful image]({{ site.url }}/dailySketch/assets/image.png)
+
+##Day 01: Plants
+![useful image]({{ site.url }}/dailySketch/assets/d01_plants.png)
