@@ -7,6 +7,8 @@ int BASE_WIDTH = 250;
 // globals
 ControlP5 cp5;
 int maxRecursionLvl = 3;
+int baseRandomSeed = 0;
+int randomSeedValue;
 
 void setup() {
 	size(700, 700);
@@ -17,11 +19,13 @@ void setup() {
   cp5.addSlider("maxRecursionLvl")
      .setPosition(100,50)
      .setRange(0,10);
-	
-	noLoop();
 }
 
 void drawShape(int width) {
+
+	//We force randomSeed to avoid change on every frame
+	randomSeed(randomSeedValue);
+
 	int halfWidth = width / 2;
 	float randomNumber = random(0, 4);
 	beginShape();
@@ -46,13 +50,16 @@ void drawShape(int width) {
 		vertex(-halfWidth, halfWidth);
 		vertex(-halfWidth, -halfWidth);
 	}
+
+	//We make sure no shape use the same randomSeed
+	randomSeedValue++;
 	endShape();
 }
 
 void drawRect(int recursion_lvl, int maxRecursionLvl, int width) {
 	if (recursion_lvl <= maxRecursionLvl) {
 		noFill();
-		stroke(0);
+		stroke(255);
 
 		drawShape(width);
 
@@ -81,7 +88,10 @@ void drawRect(int recursion_lvl, int maxRecursionLvl, int width) {
 } 
 
 void draw() {
-	background(255);
+	background(0);
+
+	//We don't want randomness to change every frame
+	randomSeedValue = baseRandomSeed;
 
 	//Draw simple rect fractal
 	pushMatrix();
