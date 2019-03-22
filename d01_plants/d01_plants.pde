@@ -17,13 +17,44 @@ void setup() {
   cp5.addSlider("maxRecursionLvl")
      .setPosition(100,50)
      .setRange(0,10);
+	
+	noLoop();
+}
+
+void drawShape(int width) {
+	int halfWidth = width / 2;
+	float randomNumber = random(0, 4);
+	beginShape();
+	if (randomNumber < 1) {
+		//top right corner
+		vertex(halfWidth, -halfWidth);
+		vertex(-halfWidth, -halfWidth);
+		vertex(-halfWidth, halfWidth);
+	} else if (randomNumber < 2) {
+		// top left corner
+		vertex(-halfWidth, -halfWidth);
+		vertex(halfWidth, -halfWidth);
+		vertex(halfWidth, halfWidth);
+	} else if (randomNumber < 3) {
+		// bottom right corner
+		vertex(halfWidth, -halfWidth);
+		vertex(halfWidth, halfWidth);
+		vertex(-halfWidth, halfWidth);
+	} else {
+		// bottom left corner
+		vertex(halfWidth, halfWidth);
+		vertex(-halfWidth, halfWidth);
+		vertex(-halfWidth, -halfWidth);
+	}
+	endShape();
 }
 
 void drawRect(int recursion_lvl, int maxRecursionLvl, int width) {
 	if (recursion_lvl <= maxRecursionLvl) {
 		noFill();
 		stroke(0);
-		rect(-(width / 2), -(width / 2), width, width);
+
+		drawShape(width);
 
 		//Draw side rects recursively
 		//right
