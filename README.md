@@ -12,8 +12,8 @@ https://processing.org/download/
 Un sketch permettant de dessiner des fleurs basé sur la répétition de motifs géométrique
 Controls:
 - Souris (boutton gauche appuyé):
-..- Mouvement latéral gauche droite: changement de couleur et rotation
-..- Mouvement haut bas: Changement du nombre d'itération de la fractale
+..* Mouvement latéral gauche droite: changement de couleur et rotation
+..* Mouvement haut bas: Changement du nombre d'itération de la fractale
 - Clavier:
-..- S: Sauvegarde au format png
-..- R: Réinitialisation du dessin
+..* S: Sauvegarde au format png
+..* R: Réinitialisation du dessin
