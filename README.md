@@ -6,5 +6,15 @@ Processing (latest)
 https://processing.org/download/
 
 
-##Day 01: Plants
+## Day 01: Plants
 ![useful image]({{ site.url }}/dailySketch/assets/d01_plants.png)
+
+Un sketch permettant de dessiner des fleurs basées sur la répétition de motifs géométriques
+
+Controls:
+- Souris (boutton gauche appuyé):
+  - Mouvement latéral gauche droite: changement de couleur et rotation
+  - Mouvement haut bas: Changement du nombre d'itération de la fractale
+- Clavier:
+  - S: Sauvegarde au format png
+  - R: Réinitialisation du dessin
