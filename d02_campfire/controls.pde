@@ -27,4 +27,9 @@ void setupControllers() {
 	cp5.addSlider("baseSpace")
 		.setPosition(100, ySliderPos)
 		.setRange(0, 100);
+
+	ySliderPos += ySliderSpace;
+  cp5.addToggle("animate")
+     .setPosition(100, ySliderPos)
+     .setSize(50,20);
 }

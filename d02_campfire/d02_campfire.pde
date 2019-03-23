@@ -3,13 +3,14 @@ int BACKGROUND_COLOR = 0;
 int STROKE_COLOR = 255;
 int BASE_WIDTH = 200;
 int BASE_HEIGHT = int(BASE_WIDTH / 4);
+boolean animate = false;
 
 //globals
 float rotation = 0.35;
 int space;
-int nbRecursions = 5;
-float expensionRatio = 1.2;
-int baseSpace = 75;
+int nbRecursions = 15;
+float expensionRatio = 1.06;
+int baseSpace = 60;
 
 void setup() {
 	fullScreen();
@@ -46,6 +47,11 @@ void drawGround(int recursionLvl, int maxRecursionLvl, int width, int height) {
 }
 
 void draw() {
+
+	//Animations
+	if (animate) {
+		handleAnimation();
+	}
 
 	//set base variables
 	space = baseSpace;
