@@ -1,5 +1,3 @@
-import controlP5.*;
-
 // constants
 int BASE_RECURSION_LVL = 3;
 int MAX_RECURSION_LVL = 10;
