@@ -2,13 +2,9 @@
 Un sketch processing par jour pendant X jours
 
 ## Dependances
-Processing
+[Processing](https://processing.org)
 
-https://processing.org/download/
-
-ControlP5
-
-http://www.sojamo.de/libraries/controlP5/
+[ControlP5](http://www.sojamo.de/libraries/controlP5/)
 
 # Session 1 : 22 Mars 2019, 20 jours
 ## Jour 01: Plantes
