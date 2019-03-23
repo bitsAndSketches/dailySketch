@@ -1,5 +1,3 @@
-import controlP5.*;
-
 //const
 int BACKGROUND_COLOR = 0;
 int STROKE_COLOR = 255;
@@ -10,37 +8,14 @@ int BASE_HEIGHT = int(BASE_WIDTH / 4);
 float rotation = 0.35;
 int space;
 int nbRecursions = 5;
-ControlP5 cp5;
 float expensionRatio = 1.2;
 int baseSpace = 75;
 
 void setup() {
-
-	int ySliderPos = 50;
-	int ySliderSpace = 20;
-
-	cp5 = new ControlP5(this);
 	fullScreen();
-
-  cp5.addSlider("rotation")
-		.setPosition(100,ySliderPos)
-		.setRange(-TWO_PI,TWO_PI);
-	
-	ySliderPos += ySliderSpace;
-	cp5.addSlider("nbRecursions")
-		.setPosition(100, ySliderPos)
-		.setRange(1, 25);
-	
-	ySliderPos += ySliderSpace;
-	cp5.addSlider("expensionRatio")
-		.setPosition(100, ySliderPos)
-		.setRange(1, 1.5);
-	
-	ySliderPos += ySliderSpace;
-	cp5.addSlider("baseSpace")
-		.setPosition(100, ySliderPos)
-		.setRange(0, 100);
+	setupControllers();
 }
+
 
 void drawShape(int width, int height) {
 	int halfHeight = height / 2;
