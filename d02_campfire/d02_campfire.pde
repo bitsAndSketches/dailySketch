@@ -1,17 +1,45 @@
+import controlP5.*;
+
 //const
-int BACKGROUND_COLOR = 255;
-int STROKE_COLOR = 0;
+int BACKGROUND_COLOR = 0;
+int STROKE_COLOR = 255;
 int BASE_WIDTH = 200;
 int BASE_HEIGHT = int(BASE_WIDTH / 4);
-int BASE_SPACE = 75;
 
 //globals
 float rotation = 0.35;
 int space;
 int nbRecursions = 5;
+ControlP5 cp5;
+float expensionRatio = 1.2;
+int baseSpace = 75;
 
 void setup() {
-	size(700, 700);
+
+	int ySliderPos = 50;
+	int ySliderSpace = 20;
+
+	cp5 = new ControlP5(this);
+	fullScreen();
+
+  cp5.addSlider("rotation")
+		.setPosition(100,ySliderPos)
+		.setRange(-TWO_PI,TWO_PI);
+	
+	ySliderPos += ySliderSpace;
+	cp5.addSlider("nbRecursions")
+		.setPosition(100, ySliderPos)
+		.setRange(1, 25);
+	
+	ySliderPos += ySliderSpace;
+	cp5.addSlider("expensionRatio")
+		.setPosition(100, ySliderPos)
+		.setRange(1, 1.5);
+	
+	ySliderPos += ySliderSpace;
+	cp5.addSlider("baseSpace")
+		.setPosition(100, ySliderPos)
+		.setRange(0, 100);
 }
 
 void drawShape(int width, int height) {
@@ -36,8 +64,8 @@ void drawGround(int recursionLvl, int maxRecursionLvl, int width, int height) {
 		rotate(rotation);
 		pushMatrix();
 		translate(0, space);
-		space = int(space * 1.2);
-		drawGround(recursionLvl + 1, maxRecursionLvl, int(width * 1.2), int(height * 1.2));
+		space = int(space * expensionRatio);
+		drawGround(recursionLvl + 1, maxRecursionLvl, int(width * expensionRatio), int(height * expensionRatio));
 		popMatrix();
 	}
 }
@@ -45,10 +73,7 @@ void drawGround(int recursionLvl, int maxRecursionLvl, int width, int height) {
 void draw() {
 
 	//set base variables
-	space = BASE_SPACE;
-
-	//Handle mouse event for rotation
-	handleMouseEvents();
+	space = baseSpace;
 
 	background(BACKGROUND_COLOR);
 	noFill();
