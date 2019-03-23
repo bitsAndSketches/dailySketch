@@ -2,8 +2,12 @@
 int R_KEY = 82;
 int S_KEY = 83;
 int UP_KEY = 38;
+int V_KEY = 86;
 String PATH = "img";
 String EXTENSION = "png";
+
+//global
+boolean hiddenControls = false;
 
 void keyPressed() {
 	if (keyCode == R_KEY) {
@@ -20,4 +24,13 @@ void keyPressed() {
 		String name = m+"-"+d+"-"+h+"-"+mi+"-"+s;
 		save(PATH + "/" + name + "." + EXTENSION);
 	}
+if (keyCode == V_KEY) {
+		if (hiddenControls) {
+			cp5.show();
+		} else {
+			cp5.hide();
+		}
+		hiddenControls = !hiddenControls;
+		recording = !recording;
+  }
 }

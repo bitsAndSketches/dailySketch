@@ -4,6 +4,7 @@ int STROKE_COLOR = 255;
 int BASE_WIDTH = 200;
 int BASE_HEIGHT = int(BASE_WIDTH / 4);
 boolean animate = false;
+boolean recording = false;
 
 //globals
 float rotation = 0.35;
@@ -51,6 +52,10 @@ void draw() {
 	//Animations
 	if (animate) {
 		handleAnimation();
+	}
+
+	if (recording) {
+    saveFrame("video/campfire_####.png");
 	}
 
 	//set base variables
