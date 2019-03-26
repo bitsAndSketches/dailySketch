@@ -4,8 +4,12 @@ int SPACE_BETWEEN_ARCS = 12;
 int INITIAL_ARC_WIDTH = 50;
 int SKETCH_BORDER_PADDING = 50;
 
+//Weird and interesting behaviour with ROTATION_SPEED at 0.001
+float ROTATION_SPEED = 0.001;
+
 //globals
 ArrayList<ArcCharacter> arcCharacters = new ArrayList<ArcCharacter>();
+float rotationFactor = 0;
 
 class ArcCharacter {
 
@@ -27,7 +31,9 @@ class ArcCharacter {
 	void display() {
 		stroke(this.c);
 		strokeWeight(3);
-		arc(0, 0, this.ellipseWidth, this.ellipseWidth, this.start, this.stop);
+		float start = this.start + rotationFactor;
+		float stop = this.stop + rotationFactor;
+		arc(0, 0, this.ellipseWidth, this.ellipseWidth, start, stop);
 	}
 }
 
@@ -63,4 +69,11 @@ void draw() {
 		arcCharacters.get(i).display();
 	}
 	popMatrix();
+}
+
+// Mouse events
+void mouseMoved() {
+	rotationFactor = mouseX > (width / 2) ?
+		map(mouseX, 0, ROTATION_SPEED, width / 2, width) :
+		map(mouseX, 0, ROTATION_SPEED, width / 2, 0);
 }
