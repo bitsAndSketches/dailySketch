@@ -1,10 +1,12 @@
 //constants
 int NB_TYPES = 5;
+int NB_ARCS = 30;
 
 //globals
-ArcCharacter[] arcCharacters;
+ArrayList<ArcCharacter> arcCharacters = new ArrayList<ArcCharacter>();
 
 class ArcCharacter {
+
 	//c stands for color
 	int c;
 	int groupIndex;
@@ -29,16 +31,15 @@ class ArcCharacter {
 
 void setup() {
 	size(700, 700);
-	arcCharacters = new ArcCharacter[15];
 	int[] colors = new int[NB_TYPES];
 	for (int i = 0; i < NB_TYPES; i++) {
 		colors[i] = 255 - (i * 50);
 	}
 	
-	for (int i = 0; i < 15; i++) {
+	for (int i = 0; i < NB_ARCS; i++) {
 		int ellipseWidth = 50 + (i * 12);
 		int groupIndex = int(random(0, NB_TYPES));
-		arcCharacters[i] = new ArcCharacter(colors[groupIndex], groupIndex, ellipseWidth);
+		arcCharacters.add(new ArcCharacter(colors[groupIndex], groupIndex, ellipseWidth));
 	}
 }
 
@@ -49,8 +50,8 @@ void draw() {
 	noFill();
 	stroke(0);
 
-	for (int i = 0; i < 15; i++) {
-		arcCharacters[i].display();
+	for (int i = 0; i < arcCharacters.size(); i++) {
+		arcCharacters.get(i).display();
 	}
 	popMatrix();
 }
