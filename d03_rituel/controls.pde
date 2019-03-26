@@ -9,9 +9,9 @@ void setupControllers() {
 
 	cp5 = new ControlP5(this);
 
-  // cp5.addSlider("rotation")
-	// 	.setPosition(100,ySliderPos)
-	// 	.setRange(-TWO_PI,TWO_PI);
+  cp5.addSlider("rotationSpeed")
+		.setPosition(100,ySliderPos)
+		.setRange(MIN_ROTATION_SPEED, MAX_ROTATION_SPEED);
 	
 	// ySliderPos += ySliderSpace;
 	// cp5.addSlider("nbRecursions")

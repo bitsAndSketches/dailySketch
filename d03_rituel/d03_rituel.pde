@@ -5,11 +5,14 @@ int INITIAL_ARC_WIDTH = 50;
 int SKETCH_BORDER_PADDING = 50;
 
 //Weird and interesting behaviour with ROTATION_SPEED at 0.001
-float ROTATION_SPEED = 0.001;
+float MIN_ROTATION_SPEED = 0.001;
+float MAX_ROTATION_SPEED = 0.1;
+float MAX_ROTATION = PI;
 
 //globals
 ArrayList<ArcCharacter> arcCharacters = new ArrayList<ArcCharacter>();
 float rotationFactor = 0;
+float rotationSpeed = MIN_ROTATION_SPEED;
 
 class ArcCharacter {
 
@@ -56,6 +59,9 @@ void setup() {
 
 	//Sketch dimensions
 	size(700, 700);
+
+	//Controls
+	// setupControllers();
 }
 
 void draw() {
@@ -69,11 +75,12 @@ void draw() {
 		arcCharacters.get(i).display();
 	}
 	popMatrix();
+
+	//Animations
+	// rotationFactor += rotationSpeed;
 }
 
 // Mouse events
 void mouseMoved() {
-	rotationFactor = mouseX > (width / 2) ?
-		map(mouseX, 0, ROTATION_SPEED, width / 2, width) :
-		map(mouseX, 0, ROTATION_SPEED, width / 2, 0);
+	rotationFactor = map(mouseX, 0, width, -MAX_ROTATION, MAX_ROTATION);
 }
