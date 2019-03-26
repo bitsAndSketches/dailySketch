@@ -1,6 +1,8 @@
 //constants
 int NB_TYPES = 5;
-int NB_ARCS = 30;
+int SPACE_BETWEEN_ARCS = 12;
+int INITIAL_ARC_WIDTH = 50;
+int SKETCH_BORDER_PADDING = 50;
 
 //globals
 ArrayList<ArcCharacter> arcCharacters = new ArrayList<ArcCharacter>();
@@ -30,17 +32,24 @@ class ArcCharacter {
 }
 
 void setup() {
-	size(700, 700);
+
+	//Scope variables
 	int[] colors = new int[NB_TYPES];
+	int arcWidth = INITIAL_ARC_WIDTH;
+	int maxWidth = height - SKETCH_BORDER_PADDING;
+
 	for (int i = 0; i < NB_TYPES; i++) {
 		colors[i] = 255 - (i * 50);
 	}
-	
-	for (int i = 0; i < NB_ARCS; i++) {
-		int ellipseWidth = 50 + (i * 12);
+
+	while(arcWidth < maxWidth) {
 		int groupIndex = int(random(0, NB_TYPES));
-		arcCharacters.add(new ArcCharacter(colors[groupIndex], groupIndex, ellipseWidth));
+		arcCharacters.add(new ArcCharacter(colors[groupIndex], groupIndex, arcWidth));
+		arcWidth += SPACE_BETWEEN_ARCS;
 	}
+
+	//Sketch dimensions
+	size(700, 700);
 }
 
 void draw() {
