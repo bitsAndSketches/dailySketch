@@ -2,9 +2,11 @@
 int NB_TYPES = 5;
 int SPACE_BETWEEN_ARCS = 12;
 int INITIAL_ARC_WIDTH = 50;
-int SKETCH_BORDER_PADDING = 50;
-int ANIMATION_RATE = 1;
+int SKETCH_BORDER_PADDING = 250;
+int STROKEWEIGHT = 5;
+int ANIMATION_RATE = 2;
 float ROTATION_SPEED = 0.05;
+float GROWTH_SPEED = 30;
 
 //Weird and interesting behaviour with ROTATION_SPEED at 0.001
 float MIN_ROTATION_SPEED = 0.001;
@@ -15,7 +17,7 @@ float MAX_ROTATION = PI;
 ArrayList<ArcCharacter> arcCharacters = new ArrayList<ArcCharacter>();
 float rotationFactor = 0;
 float rotationSpeed = MIN_ROTATION_SPEED;
-float countDown = 1;
+float countDown = ANIMATION_RATE;
 
 class ArcCharacter {
 
@@ -28,18 +30,20 @@ class ArcCharacter {
 
 	//Move variables
 	float rotationFactor = 0;
+	float widthFactor = 0;
 
 	ArcCharacter(int c, int groupIndex, int ellipseWidth) {
 		this.c = c;
 		this.groupIndex = groupIndex;
 		this.ellipseWidth = ellipseWidth;
-		start = random(0, TWO_PI);
-		stop = start + random(0, PI);
+		this.start = random(0, TWO_PI);
+		this.stop = start + random(0, PI);
 	}
 
 	//Called every X seconds, it will change rotation and direction of the arc
-	void updateMovDirection(float rotationFactor) {
+	void updateMovDirection(float rotationFactor, float widthFactor) {
 		this.rotationFactor = rotationFactor;
+		this.ellipseWidth += widthFactor;
 	}
 
 	void update() {
@@ -49,14 +53,13 @@ class ArcCharacter {
 
 	void display() {
 		stroke(this.c);
-		strokeWeight(3);
-		// float start = this.start + rotationFactor;
-		// float stop = this.stop + rotationFactor;
+		strokeWeight(STROKEWEIGHT);
 		arc(0, 0, this.ellipseWidth, this.ellipseWidth, start, stop);
 	}
 }
 
 void setup() {
+	background(255);
 
 	//Scope variables
 	int[] colors = new int[NB_TYPES];
@@ -74,7 +77,8 @@ void setup() {
 	}
 
 	//Sketch dimensions
-	size(700, 700);
+	// size(700, 700);
+	fullScreen();
 
 	//Controls
 	// setupControllers();
@@ -86,13 +90,12 @@ void draw() {
 	stroke(0);
 
 	//We update the directions of the arcs every ANIMATION_RATE seconds
-	countDown += (ANIMATION_RATE / frameRate);
+	countDown += (1 / frameRate);
 	if (countDown >= ANIMATION_RATE) {
-		background(255);
 		for (int i = 0; i < arcCharacters.size(); i++) {
 			float rotationFactor = random(-ROTATION_SPEED, ROTATION_SPEED);
-			println("rotationFactor: "+rotationFactor);
-			arcCharacters.get(i).updateMovDirection(rotationFactor);
+			float widthFactor = random(-GROWTH_SPEED, GROWTH_SPEED);
+			arcCharacters.get(i).updateMovDirection(rotationFactor, widthFactor);
 		}
 		countDown = 0;
 	}
@@ -104,12 +107,4 @@ void draw() {
 	}
 	rotationFactor = 0;
 	popMatrix();
-
-	//Animations
-	// rotationFactor += rotationSpeed;
-}
-
-// Mouse events
-void mouseMoved() {
-	rotationFactor = map(mouseX, 0, width, -MAX_ROTATION, MAX_ROTATION);
 }
