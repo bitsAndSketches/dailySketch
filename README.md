@@ -34,3 +34,17 @@ Commandes:
   - départ/arrêt de l'animation
 - Clavier:
   - V: départ/arrêt de l'enregistrement "video" (succession d'images)
+
+## Jour 03: Rituel
+![Rituel_arc]({{ site.url }}/dailySketch/assets/d03_rituel.png)
+
+Ce sketch permet l'animation d'arcs créant par leurs mouvement des peintures circulaires.
+
+Commandes:
+- ControlP5:
+	- espacement
+	- vitesse de rotation
+	- épaisseur des contours
+	- vitesse de l'animation
+- Clavier:
+	- S: sauvegarde au format png
