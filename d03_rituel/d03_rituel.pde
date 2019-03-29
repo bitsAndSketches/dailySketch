@@ -9,6 +9,7 @@ int strokeWeight = 5;
 int animationRate = 2;
 int growthSpeed = 30;
 float rotationSpeed = 0.05;
+int endSliderPos = 0;
 
 //globals
 ArrayList<ArcCharacter> arcCharacters = new ArrayList<ArcCharacter>();
@@ -41,6 +42,12 @@ void setup() {
 }
 
 void draw() {
+
+	//hack to hide controls on save
+	noStroke();
+	fill(255);
+	rect(0, 0, 300, endSliderPos + 100);
+
 	noFill();
 	stroke(0);
 

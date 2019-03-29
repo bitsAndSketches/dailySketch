@@ -37,4 +37,6 @@ void setupControllers() {
 	cp5.addSlider("rotationSpeed")
 		.setPosition(100, ySliderPos)
 		.setRange(0.01, 0.1);
+
+	endSliderPos = ySliderPos;
 }
