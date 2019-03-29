@@ -9,27 +9,32 @@ void setupControllers() {
 
 	cp5 = new ControlP5(this);
 
-  cp5.addSlider("rotationSpeed")
-		.setPosition(100,ySliderPos)
-		.setRange(MIN_ROTATION_SPEED, MAX_ROTATION_SPEED);
-	
-	// ySliderPos += ySliderSpace;
-	// cp5.addSlider("nbRecursions")
-	// 	.setPosition(100, ySliderPos)
-	// 	.setRange(1, 25);
-	
-	// ySliderPos += ySliderSpace;
-	// cp5.addSlider("expensionRatio")
-	// 	.setPosition(100, ySliderPos)
-	// 	.setRange(1, 1.5);
-	
-	// ySliderPos += ySliderSpace;
-	// cp5.addSlider("baseSpace")
-	// 	.setPosition(100, ySliderPos)
-	// 	.setRange(0, 100);
+  cp5.addSlider("nbTypes")
+		.setPosition(100, ySliderPos)
+		.setRange(1, 15);
 
-	// ySliderPos += ySliderSpace;
-  // cp5.addToggle("animate")
-  //    .setPosition(100, ySliderPos)
-  //    .setSize(50,20);
+	ySliderPos += ySliderSpace;
+	cp5.addSlider("spaceBetweenArcs")
+		.setPosition(100, ySliderPos)
+		.setRange(5, 50);
+
+	ySliderPos += ySliderSpace;
+	cp5.addSlider("strokeWeight")
+		.setPosition(100, ySliderPos)
+		.setRange(1, 25);
+
+	ySliderPos += ySliderSpace;
+	cp5.addSlider("animationRate")
+		.setPosition(100, ySliderPos)
+		.setRange(1, 10);
+
+	ySliderPos += ySliderSpace;
+	cp5.addSlider("growthSpeed")
+		.setPosition(100, ySliderPos)
+		.setRange(5, 50);
+
+	ySliderPos += ySliderSpace;
+	cp5.addSlider("rotationSpeed")
+		.setPosition(100, ySliderPos)
+		.setRange(0.01, 0.1);
 }

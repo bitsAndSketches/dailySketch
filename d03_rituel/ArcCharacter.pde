@@ -32,7 +32,7 @@ class ArcCharacter {
 
 	void display() {
 		stroke(this.c);
-		strokeWeight(STROKEWEIGHT);
+		strokeWeight(strokeWeight);
 		arc(0, 0, this.ellipseWidth, this.ellipseWidth, start, stop);
 	}
 }
