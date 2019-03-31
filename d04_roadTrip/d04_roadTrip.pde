@@ -11,5 +11,6 @@ void setup() {
 
 void draw() {
 	background(255);
+	grid.update();
 	grid.display();
 }
