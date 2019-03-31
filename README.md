@@ -48,3 +48,15 @@ Commandes:
 	- vitesse de l'animation
 - Clavier:
 	- S: sauvegarde au format png
+
+## Jour 03: Road trip
+![RoadTrip_storm01]({{ site.url }}/dailySketch/assets/d04_roadTripStorm01.png)
+![RoadTrip_storm02]({{ site.url }}/dailySketch/assets/d04_roadTripStorm02.png)
+
+Ce sketch Permet la création d'une grille de pixels dont les teintes de gris se modulent en permanence
+
+Commandes:
+- ControlP5:
+	- vitesse pour le changement de teintes
+- Clavier:
+	- S: savegarde au format png
