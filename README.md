@@ -49,7 +49,7 @@ Commandes:
 - Clavier:
 	- S: sauvegarde au format png
 
-## Jour 03: Road trip
+## Jour 04: Road trip
 ![RoadTrip_storm01]({{ site.url }}/dailySketch/assets/d04_roadTripStorm01.png)
 ![RoadTrip_storm02]({{ site.url }}/dailySketch/assets/d04_roadTripStorm02.png)
 
