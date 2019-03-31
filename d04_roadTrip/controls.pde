@@ -2,6 +2,7 @@ import controlP5.*;
 
 //global
 ControlP5 cp5;
+int speed = 15;
 
 void setupControllers() {
 	int ySliderPos = 50;
@@ -9,9 +10,8 @@ void setupControllers() {
 
 	cp5 = new ControlP5(this);
 
-  // cp5.addSlider("nbTypes")
-	// 	.setPosition(100, ySliderPos)
-	// 	.setRange(1, 15);
-
-	// ySliderPos += ySliderSpace;
+  cp5.addSlider("speed")
+		.setPosition(100, ySliderPos)
+		.setRange(5, 30);
+	ySliderPos += ySliderSpace;
 }

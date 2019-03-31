@@ -18,6 +18,9 @@ class Tile {
 	}
 
 	void update(Tile[][] tiles, int i, int j) {
+
+		// we get the average shade of the neighbors and try to get as close to
+		// them as possible
 		int neighborShadesSum = 0;
 		int nbNeighbors = 0;
 
@@ -38,12 +41,17 @@ class Tile {
 			neighborShadesSum += tiles[i][j + 1].shade;
 		}
 
+		// Speed is a global handled via controlP5
 		int averageShade = int(neighborShadesSum / nbNeighbors);
 		if (averageShade > this.shade) {
-			this.shade += 5;
+			this.shade += speed;
 		} else if (averageShade < this.shade) {
-			this.shade -= 5;
+			this.shade -= speed;
 		}
+
+		// We make sure shade is between 0 and 255
+		// Note: We also might achieve interesting behaviour without this line
+		this.shade = constrain(this.shade, 0, 255);
 	}
 }
 
@@ -51,7 +59,7 @@ class Grid {
 	int n;
 	Tile[][] tiles;
 
-	// create a n*n grid
+	// Create a n*n grid
 	Grid(int n) {
 		this.n = n;
 		this.tiles = new Tile[n][n];

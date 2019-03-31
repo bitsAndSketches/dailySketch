@@ -1,11 +1,12 @@
 //constants
-int N = 30;
+int N = 100;
 
 //globals
 Grid grid;
 
 void setup() {
-	size(300, 300);
+	size(1000, 1000);
+	setupControllers();
 	grid = new Grid(N);
 }
 
