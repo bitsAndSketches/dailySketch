@@ -17,9 +17,10 @@ class Particle {
 
 	void update() {
 		this.vel.add(this.acceleration);
+		this.vel.limit(MAX_SPEED);
 		this.pos.add(this.vel);
-		this.checkEdges();
 		this.acceleration.mult(0);
+		this.checkEdges();
 	}
 
 	// This function can be updated to add a mass to divide the force with,
@@ -36,6 +37,14 @@ class Particle {
 		float mag = map(dist, 0, EXPLOSION_MAGNITUDE, EXPLOSION_FORCE, 0);
 		PVector force = PVector.sub(this.pos, explosionSource).setMag(mag);
 		this.applyForce(force);	
+	}
+
+	void follow(FlowField flowfield) {
+		PVector desired = flowfield.getVectorAt(this.pos.x, this.pos.y);
+		PVector scaledDesired = PVector.mult(desired, MAX_SPEED);
+		PVector steer = PVector.sub(scaledDesired, this.vel);
+		steer.limit(STEER_LIMIT);
+		this.applyForce(steer);
 	}
 
 	void checkEdges() {

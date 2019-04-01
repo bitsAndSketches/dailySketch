@@ -24,7 +24,18 @@ class FlowField {
 		}
 	}
 
+	//Return a vector corresponding to some coords
+	PVector getVectorAt(float x, float y) {
+		int i = int(y / this.spaceY);
+		int j = int(y / this.spaceY);
+		i = constrain(i, 0, N_FLOW_FIELD - 1);
+		j = constrain(j, 0, N_FLOW_FIELD - 1);
+		return this.vectors[i][j];
+	}
+
 	void display() {
+		noFill();
+		stroke(100);
 		for (int i = 0; i < this.vectors.length; i++) {
 			int y = i * this.spaceY;
 			for (int j = 0; j < this.vectors[i].length; j++) {
